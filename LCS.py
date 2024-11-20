@@ -5,7 +5,7 @@ def lcs(X, Y):
     
     L = [[None] * (n + 1) for i in range(m + 1)]
     
-    # Building the LCS length array
+    # Calculating Longest Common Subsequence
     for i in range(m + 1):
         for j in range(n + 1):
             if i == 0 or j == 0:
@@ -15,10 +15,9 @@ def lcs(X, Y):
             else:
                 L[i][j] = max(L[i-1][j], L[i][j-1])
     
-    # The length of the LCS is L[m][n]
-    return L[m][n]
+    return L[m][n] # return length of LCS
 
-# Function to read the sequences from the file
+# Function for reading sequences from the file
 def read_sequences(file_path):
     sequences = []
     with open(file_path, 'r') as file:
@@ -31,10 +30,10 @@ def read_sequences(file_path):
                 sequences.append((header, sequence))
     return sequences
 
-# Read sequences from the given file
-sequences = read_sequences('Downloads/tulp3_relatives-2-1.rtf')
+# Reading sequences from the given file
+sequences = read_sequences('Downloads/sequences.txt')
 
-# Compute the LCS for each pair of sequences
+# Calculating LCS for each pair of sequences
 lcs_results = {}
 for i in range(len(sequences)):
     for j in range(i + 1, len(sequences)):
@@ -43,6 +42,6 @@ for i in range(len(sequences)):
         lcs_length = lcs(seq1, seq2)
         lcs_results[(sequences[i][0], sequences[j][0])] = lcs_length
 
-# Print the LCS results for each pair
+# Printing LCS for each pair
 for pair, length in lcs_results.items():
-    print(f'LCS length between {pair[0]} and {pair[1]}: {length}')
+    print(f'LCS between {pair[0]} & {pair[1]}: {length}')
