@@ -75,7 +75,7 @@ file_path = "Downloads/PROT_SEQ.txt"  # Path (Replace this file for Protein and 
 DNA_SEQ = extract_sequence_from_rtf(file_path)
 
 # Binary coding
-binary_dna_compressed, binary_dna_mapping = binary_compress(DNA_SEQ, len(set(DNA_SEQ)))
+binary_dna_compressed, binary_dna_mapping = binary_compress(DNA_SEQ, len(set(DNA_SEQ))-1)
 
 # Huffman coding
 huffman_dna_compressed, huffman_dna_codes = huffman_compress(DNA_SEQ)
